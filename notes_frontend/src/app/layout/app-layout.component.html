@@ -1,0 +1,54 @@
+<div class="app-shell" [class.sidebar-collapsed]="!sidebarOpen()">
+  <header class="app-header">
+    <button class="icon-btn menu" (click)="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+    <a class="brand" routerLink="/">Notes</a>
+    <div class="header-actions">
+      <a class="nav-link" routerLink="/" aria-label="All notes">All Notes ({{ noteCount() }})</a>
+      <a class="nav-link" routerLink="/new" aria-label="Create note">+ New</a>
+    </div>
+  </header>
+
+  <aside class="app-sidebar" *ngIf="sidebarOpen()">
+    <div class="search">
+      <input
+        type="search"
+        placeholder="Search notes..."
+        (input)="storage.setSearch(($any($event.target)?.value) ?? '')"
+      />
+    </div>
+    <div class="tags">
+      <div class="tags-header">
+        <span>Tags</span>
+        <button class="icon-btn add" (click)="storage.createTag('New Tag')" aria-label="Add tag">＋</button>
+      </div>
+      <div class="tag-list">
+        <button
+          class="tag-chip"
+          [class.active]="storage.activeTagIds().length === 0"
+          (click)="storage.activeTagIds.set([])"
+          title="Show all notes"
+        >
+          All
+        </button>
+        <button
+          class="tag-chip"
+          *ngFor="let t of storage.tags()"
+          [class.active]="storage.activeTagIds().includes(t.id)"
+          (click)="storage.toggleActiveTag(t.id)"
+          [title]="t.name"
+        >
+          <span class="dot" [style.backgroundColor]="t.color || 'var(--accent)'"></span>
+          {{ t.name }}
+          <span class="remove" (click)="$event.stopPropagation(); storage.deleteTag(t.id)">×</span>
+        </button>
+      </div>
+    </div>
+    <div class="footer">
+      <small>Personal Notes — Local only</small>
+    </div>
+  </aside>
+
+  <main class="app-main">
+    <router-outlet></router-outlet>
+  </main>
+</div>

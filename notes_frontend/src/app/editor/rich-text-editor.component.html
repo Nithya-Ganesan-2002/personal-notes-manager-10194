@@ -1,0 +1,24 @@
+<div class="rte">
+  <div class="toolbar">
+    <button title="Bold" (click)="exec('bold')"><b>B</b></button>
+    <button title="Italic" (click)="exec('italic')"><i>I</i></button>
+    <button title="Underline" (click)="exec('underline')"><u>U</u></button>
+    <span class="sep"></span>
+    <button title="Heading" (click)="exec('formatBlock','H2')">H2</button>
+    <button title="Paragraph" (click)="exec('formatBlock','P')">P</button>
+    <span class="sep"></span>
+    <button title="Bullet List" (click)="exec('insertUnorderedList')">• List</button>
+    <button title="Numbered List" (click)="exec('insertOrderedList')">1. List</button>
+    <span class="sep"></span>
+    <button title="Link" (click)="makeLink()">Link</button>
+    <button title="Clear Formatting" (click)="clearFormatting()">Clear</button>
+  </div>
+
+  <div
+    #editor
+    class="editor"
+    contenteditable="true"
+    [attr.placeholder]="placeholder"
+    (input)="onInput()"
+  ></div>
+</div>

@@ -1,0 +1,77 @@
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 0 16px;
+}
+
+button.primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(25,118,210,0.2);
+}
+button.primary:hover {
+  background: #1769c2;
+}
+
+.notes-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.note-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .05s ease, border .2s ease, box-shadow .2s ease;
+}
+.note-card:hover {
+  transform: translateY(-1px);
+  border-color: var(--primary);
+  box-shadow: 0 4px 16px rgba(31,41,55,0.08);
+}
+
+.note-card h3 {
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.preview {
+  color: var(--secondary);
+  font-size: .9rem;
+  max-height: 78px;
+  overflow: hidden;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 8px;
+  color: var(--secondary);
+  background: var(--surface);
+  font-size: .75rem;
+}

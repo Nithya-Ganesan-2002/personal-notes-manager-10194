@@ -1,0 +1,25 @@
+<div class="notes-page">
+  <div class="toolbar">
+    <button class="primary" (click)="createNote()">+ New Note</button>
+  </div>
+
+  <div class="notes-grid">
+    <a
+      class="note-card"
+      *ngFor="let note of storage.getFilteredNotes()"
+      [routerLink]="['/edit', note.id]"
+      [title]="note.title"
+    >
+      <h3>{{ note.title || 'Untitled' }}</h3>
+      <div class="preview" [innerHTML]="note.contentHtml"></div>
+      <div class="meta">
+        <span>{{ note.updatedAt | date:'medium' }}</span>
+        <div class="tags">
+          <span class="chip" *ngFor="let tid of note.tags">
+            {{ tagName(tid) }}
+          </span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

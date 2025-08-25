@@ -1,0 +1,47 @@
+.rte {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.toolbar button {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--secondary);
+  border-radius: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+.toolbar button:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.toolbar .sep {
+  width: 1px;
+  background: var(--border);
+  align-self: stretch;
+}
+
+.editor {
+  min-height: 180px;
+  padding: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.editor:empty:before {
+  content: attr(placeholder);
+  color: var(--muted);
+}

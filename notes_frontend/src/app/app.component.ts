@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
+import { AppLayoutComponent } from './layout/app-layout.component';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  standalone: true,
+  imports: [AppLayoutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'notes_frontend is being generated';
+  title = 'Personal Notes';
 }

@@ -1,0 +1,41 @@
+<div class="editor-page">
+  <div class="topbar">
+    <a class="link" routerLink="/">← Back</a>
+    <div class="actions">
+      <button class="ghost" (click)="addTag()">+ Tag</button>
+      <button class="danger" *ngIf="note()" (click)="deleteNote()">Delete</button>
+      <button class="primary" (click)="createOrSave()">{{ note() ? 'Save' : 'Create' }}</button>
+    </div>
+  </div>
+
+  <div class="form">
+    <input
+      class="title"
+      type="text"
+      placeholder="Note title"
+      [ngModel]="title()"
+      (ngModelChange)="title.set($event)"
+    />
+
+    <div class="tags">
+      <label>Tags:</label>
+      <div class="tag-list">
+        <button
+          class="chip"
+          *ngFor="let t of storage.tags()"
+          [class.active]="selectedTagIds().includes(t.id)"
+          (click)="toggleTag(t.id)"
+        >
+          {{ t.name }}
+        </button>
+        <button class="chip add" (click)="addTag()">+ New Tag</button>
+      </div>
+    </div>
+
+    <app-rich-text-editor
+      [html]="html()"
+      (htmlChange)="html.set($event)"
+      placeholder="Write your note here..."
+    ></app-rich-text-editor>
+  </div>
+</div>
